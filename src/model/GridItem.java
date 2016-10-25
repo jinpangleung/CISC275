@@ -6,13 +6,13 @@ import view.Animation;
 public abstract class GridItem {
 	
 	//// Attributes ////
-	private Posn posn;
-	private Posn pixelPosn;
+	protected Posn gridPosn;
+	protected Posn pixelPosn;
 	private Animation animation;
 	
 	//// Setters and Getters ////
 	public Posn getPosn(){
-		return posn;
+		return gridPosn;
 	}
 	public Posn getPixelPosn(){
 		return pixelPosn;
@@ -21,7 +21,7 @@ public abstract class GridItem {
 		return animation;
 	}
 	public void setPosn(Posn p){
-		posn = p;
+		gridPosn = p;
 	}
 	public void setPixelPosn(Posn pp){
 		pixelPosn = pp;
@@ -35,8 +35,6 @@ public abstract class GridItem {
 		// TODO
 	}
 	
-	public void update(){
-		// TODO
-	}
+	abstract public void update();
 
 }

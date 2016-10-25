@@ -10,4 +10,7 @@ public abstract class Gabion extends GridItem {
 		return this.health;
 	}
 
+	public void update(){
+		// do nothing
+	}
 }
