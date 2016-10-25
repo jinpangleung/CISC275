@@ -2,6 +2,18 @@ package model;
 
 public class Posn {
 	
+	public Posn(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	public Posn(){}
+	
+	public String toString(){
+		return (x + " , " + y);
+	}
+	
+	
 	private int x, y;
 	
 	public int getX(){
