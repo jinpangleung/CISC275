@@ -11,8 +11,10 @@ public class InvasiveItem extends TrailItem {
 	
 	//// Methods ////
 	@Override
-	public void click(){
+	public void click(){//checking if in radius should be done by tower
 		// TODO
+		health--;
+		//set object to null
 	}
 	
 }
