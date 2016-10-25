@@ -10,7 +10,13 @@ public class Pollutant extends TrailItem {
 	}
 	
 	@Override
-	public void click(){
-		// TODO
+	public void click(){//checking if in radius should be done by tower
+		health--;
+		if (health > 0){//health can be upto 3
+			//do nothing
+		}
+		else{
+			//set object to null to remove
+		}
 	}
 }
