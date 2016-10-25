@@ -6,12 +6,15 @@ public class Larvae extends TrailItem {
 		health = 1;
 		speed = 1;
 		color = color.WHITE;
-		isBad = false;
+		isBad = true;
 	}
 	
 	//// Methods ////
 	@Override
-	public void click(){
+	public void click(){//checking if in radius should be done by tower
 		// TODO
+		health--;
+		//make estuary happiness go down because isBad is true
+		//set object to null for garbage collector
 	}
 }
