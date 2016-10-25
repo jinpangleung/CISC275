@@ -1,4 +1,4 @@
-package model;
+package cisc275_final;
 import java.awt.*;
 import java.util.*;
 
@@ -21,6 +21,7 @@ public class Grid {
 	//// Constructor ////
 	public Grid(int screenWidth, int screenHeight){
 		// TODO
+		// THe pixel grid should be a square based on 80% of the height
 	}
 	
 	//// Getters and Setters ////
@@ -44,6 +45,13 @@ public class Grid {
 	}
 	static public PixelGrid getPixelGrid(){
 		return pixelGrid;
+	}
+	static public int getGridSize(){
+		return positions.length;
+	}
+	
+	static public void setPositions(Position[][] p){
+		positions = p;
 	}
 	//// Getters and Setters ////
 	
@@ -71,5 +79,4 @@ public class Grid {
 	}
 	//// Methods ////
 
-	//TODO need getCellFromPosn() method and getCellPosnFromPixelPosn() method.
 }
