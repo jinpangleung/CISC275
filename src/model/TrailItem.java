@@ -28,10 +28,10 @@ public class TrailItem extends GridItem {
 	}
 	
 	//// Methods ////
-	public void damage(){
+	public void damage(){//we don't need this?
 		// TODO
 	}
-	public void click(){
+	public void click(){//click methods inside specific trail items will override our nothingness
 		// TODO
 	}
 	
