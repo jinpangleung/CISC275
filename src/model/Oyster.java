@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Collection;
+
 public class Oyster extends TrailItem{
 	
 	//// Constructor ////
@@ -13,14 +15,15 @@ public class Oyster extends TrailItem{
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
-		// TODO
 		health--;
-		//speed--; shouldnt matter if we subtract
-		//OysterCount++; need to connect this to OysterCount(has OysterClicked method)
-		//thats connected to Gabbion which is connected to GridItem(which connects to TrailItem)
+		//speed--; shouldnt matter if we remove
 		if(health == 0){//probably don't need this, but gaurantees its 0
-			//object remove or object change
-			//object == null; //refer to comment bellow
+			//object == null; //refer to comment below if remove doesnt work
+			Player.increaseOysterCount();
+			Collection<TrailItem> oyster = Grid.getTrailItems();
+			oyster.remove(this);
+			Collection<GridItem> items = Grid.getItems();
+			items.remove(this);
 		}
 	}
 }
