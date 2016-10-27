@@ -1,12 +1,12 @@
 package model;
 
-public class Position {
+public class GridCell {
 	private Color color;
 	private boolean isTrail;
 	private Posn position;
 	private Direction direction;
 	
-	public Position(Posn posn, Direction dir, boolean b) {
+	public GridCell(Posn posn, Direction dir, boolean b) {
 		position = posn;
 		direction = dir;
 		isTrail = b;

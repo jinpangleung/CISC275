@@ -9,7 +9,7 @@ import java.util.*;
 public class Grid {
 	
 	//// Attributes ////
-	static private Position[][] positions = new Position[10][10];
+	static private GridCell[][] positions = new GridCell[10][10];
 	static private Collection<GridItem> items = new ArrayList<GridItem>();
 	static private Collection<Tower> towers = new ArrayList<Tower>();
 	static private Collection<TrailItem> trailItems = new ArrayList<TrailItem>();
@@ -25,7 +25,7 @@ public class Grid {
 	}
 	
 	//// Getters and Setters ////
-	static public Position[][] getPositions(){
+	static public GridCell[][] getPositions(){
 		return positions;
 	}
 	static public Collection<GridItem> getItems(){
@@ -50,7 +50,7 @@ public class Grid {
 		return positions.length;
 	}
 	
-	static public void setPositions(Position[][] p){
+	static public void setPositions(GridCell[][] p){
 		positions = p;
 	}
 	//// Getters and Setters ////

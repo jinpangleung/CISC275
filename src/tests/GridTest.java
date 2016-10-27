@@ -11,7 +11,7 @@ import model.InvasiveItem;
 import model.Larvae;
 import model.Oyster;
 import model.Pollutant;
-import model.Position;
+import model.GridCell;
 import model.Posn;
 import model.RedTower;
 import model.Tower;
@@ -22,16 +22,16 @@ public class GridTest {
 	@Test
 	public void test() {
 		Grid g = new Grid(80, 60);
-		Position[][] p = new Position[3][3];
-		p[0][0] = new Position(new Posn(0, 0), Direction.EAST, true);
-		p[1][0] = new Position(new Posn(1, 0), Direction.EAST, true);
-		p[2][0] = new Position(new Posn(2, 0), Direction.SOUTH, true);
-		p[0][1] = new Position(new Posn(0, 1), Direction.WEST, true);
-		p[1][1] = new Position(new Posn(1, 1), Direction.EAST, true);
-		p[2][1] = new Position(new Posn(2, 1), Direction.SOUTH, true);
-		p[0][2] = new Position(new Posn(0, 2), Direction.NORTH, true);
-		p[1][2] = new Position(new Posn(1, 2), Direction.WEST, true);
-		p[2][2] = new Position(new Posn(2, 2), Direction.WEST, true);
+		GridCell[][] p = new GridCell[3][3];
+		p[0][0] = new GridCell(new Posn(0, 0), Direction.EAST, true);
+		p[1][0] = new GridCell(new Posn(1, 0), Direction.EAST, true);
+		p[2][0] = new GridCell(new Posn(2, 0), Direction.SOUTH, true);
+		p[0][1] = new GridCell(new Posn(0, 1), Direction.WEST, true);
+		p[1][1] = new GridCell(new Posn(1, 1), Direction.EAST, true);
+		p[2][1] = new GridCell(new Posn(2, 1), Direction.SOUTH, true);
+		p[0][2] = new GridCell(new Posn(0, 2), Direction.NORTH, true);
+		p[1][2] = new GridCell(new Posn(1, 2), Direction.WEST, true);
+		p[2][2] = new GridCell(new Posn(2, 2), Direction.WEST, true);
 		// >>V
 		// <.V
 		// ^<<
