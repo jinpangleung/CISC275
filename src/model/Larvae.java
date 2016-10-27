@@ -14,13 +14,13 @@ public class Larvae extends TrailItem {
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
+		Player p = Grid.getPlayer();
+		
 		health--;
 		if(isBad == true){//makes sure it is bad to click on
-			//Player.setEstuaryHealth(Player.estuaryHealth - 5);//make estuary happiness go down by 5 because isBad is true
-			Player.estuaryHealth = Player.estuaryHealth - 5;//above gave error?
+			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
 		}else{
-			System.out.println("isBad should be set to True, check out Larvae class");
-			Player.estuaryHealth = Player.estuaryHealth + 5;//this should never be called
+			p.setEstuaryHealth(p.getEstuaryHealth() + 5);
 		}
 		if(health > 0){
 			System.out.println("The health (larvae) should not be above 1 after click");

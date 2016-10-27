@@ -14,14 +14,14 @@ public class InvasiveItem extends TrailItem {
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
+		Player p = Grid.getPlayer();
 		health--;
 		if(isBad == true){//makes sure it is NOT bad to click on
-			//Player.setEstuaryHealth(Player.estuaryHealth - 5);//gave error?
-			Player.estuaryHealth = Player.estuaryHealth - 5;//this shouldnt be called
+			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
 			System.out.println("isBad should be set to False, check out InvasiveItem class");
 		}
 		else{
-			Player.estuaryHealth = Player.estuaryHealth + 5;//very good to destroy invasive items
+			p.setEstuaryHealth(p.getEstuaryHealth() + 5);//very good to destroy invasive items
 		}
 		if(health > 0){
 			System.out.println("The health (invasiveitem) should not be above 1 after click");
