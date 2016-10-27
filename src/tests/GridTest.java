@@ -35,7 +35,7 @@ public class GridTest {
 		// >>V
 		// <.V
 		// ^<<
-		Grid.setPositions(p);
+		Grid.setCells(p);
 		TrailItem o = new Oyster();
 		o.setPosn(new Posn(0, 0));
 		o.setPixelPosn(new Posn(15, 15));
@@ -46,7 +46,7 @@ public class GridTest {
 		ii.setPixelPosn(new Posn(15, 15));
 		ii.setSpeed(1);
 		
-		TrailItem pol = new Pollutant();
+		TrailItem pol = new Pollutant(5);
 		pol.setPosn(new Posn(0, 0));
 		pol.setPixelPosn(new Posn(15, 15));
 		pol.setSpeed(1);
