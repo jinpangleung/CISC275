@@ -20,8 +20,7 @@ public class Player {
 		this.gameTime = gameTime;
 	}
 
-	public void update() {
-		//TODO same thing with update passing elapsedTickTime - Gifan
+	public void update(double elapsedTickTime) {
 		gameTime = gameTime - elapsedTickTime;
 	}
 

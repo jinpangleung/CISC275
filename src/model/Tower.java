@@ -4,7 +4,7 @@ public abstract class Tower extends GridItem {
 	
 	//// Attributes ////
 	protected Color color;
-	protected int cooldownRemaining;
+	protected double cooldownRemaining;
 	protected int range;
 	
 	
@@ -14,7 +14,7 @@ public abstract class Tower extends GridItem {
 		return this.color;
 	}
 	
-	public int getCooldownRemaining(){
+	public double getCooldownRemaining(){
 		return this.cooldownRemaining;
 	}
 	
@@ -39,8 +39,7 @@ public abstract class Tower extends GridItem {
 	}
 	
 	@Override
-	public void update(){
-		//TODO update should probably pass around elapsedTickTime, add after controller is implemented - Gifan
+	public void update(double elapsedTickTime){
 		if(cooldownRemaining > 0){
 			cooldownRemaining = cooldownRemaining - elapsedTickTime;
 		}

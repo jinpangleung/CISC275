@@ -47,7 +47,7 @@ public class TrailItem extends GridItem {
 	}
 	
 	@Override
-	public void update() {
+	public void update(double elapsedTickTime) {
 		// TODO Fix method calls when methods become implemented - Gifan
 		// Adjust pixel position based on position of the grid cell and speed
 		switch (Grid.getCellFromPosn(gridPosn).getDirection()){

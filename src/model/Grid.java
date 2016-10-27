@@ -56,14 +56,14 @@ public class Grid {
 	//// Getters and Setters ////
 	
 	//// Methods ////
-	static public void update(){
+	static public void update(double elapsedTickTime){
 		// TODO
 		// Iterate through and update grid items
 		for(GridItem i : items){
-			i.update();
+			i.update(elapsedTickTime);
 		}
 		// Update player
-		player.update();
+		player.update(elapsedTickTime);
 		// Update difficulty
 		// do this later
 	}

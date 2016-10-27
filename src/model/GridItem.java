@@ -35,6 +35,6 @@ public abstract class GridItem {
 		// TODO
 	}
 	
-	abstract public void update();
+	abstract public void update(double elapsedTickTime);
 
 }

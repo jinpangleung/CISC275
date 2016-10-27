@@ -61,7 +61,7 @@ public class GridTest {
 		tow.setPixelPosn(new Posn(16, 16));
 		tow.setCooldownRemaining(1);
 		
-		Grid.update();
+		Grid.update(null);
 		
 		assertEquals("Oyster Update1", o.getPosn().getY(), 0);
 		assertEquals("Oyster Update1", o.getPosn().getY(), 0);
