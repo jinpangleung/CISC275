@@ -50,20 +50,26 @@ public class Grid {
 		return cells.length;
 	}
 	
+	static public void addGridItems(GridItem o){
+		items.add(o);
+	}
+	static public void addTrailItems(TrailItem o){
+		trailItems.add(o);
+	}
 	static public void setCells(GridCell[][] p){
 		cells = p;
 	}
 	//// Getters and Setters ////
 	
 	//// Methods ////
-	static public void update(double elapsedTickTime){
+	static public void update(){
 		// TODO
 		// Iterate through and update grid items
 		for(GridItem i : items){
-			i.update(elapsedTickTime);
+			i.update();
 		}
 		// Update player
-		player.update(elapsedTickTime);
+		player.update();
 		// Update difficulty
 		// do this later
 	}
