@@ -8,7 +8,7 @@ public class Oyster extends TrailItem{
 	public Oyster(){
 		health = 1;
 		speed = 1;
-		color = color.BLUE;
+		color = Color.BLUE;
 		isBad = false;
 	}
 	

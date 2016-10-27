@@ -1,8 +1,21 @@
-package cisc275_final;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import model.Grid;
+import model.Direction;
+import model.GridItem;
+import model.InvasiveItem;
+import model.Larvae;
+import model.Oyster;
+import model.Pollutant;
+import model.Position;
+import model.Posn;
+import model.RedTower;
+import model.Tower;
+import model.TrailItem;
 
 public class GridTest {
 
@@ -10,35 +23,35 @@ public class GridTest {
 	public void test() {
 		Grid g = new Grid(80, 60);
 		Position[][] p = new Position[3][3];
-		p[0][0] = new Position(new Posn(0, 0), Direction.RIGHT, true);
-		p[1][0] = new Position(new Posn(1, 0), Direction.RIGHT, true);
-		p[2][0] = new Position(new Posn(2, 0), Direction.DOWN, true);
-		p[0][1] = new Position(new Posn(0, 1), Direction.LEFT, true);
-		p[1][1] = new Position(new Posn(1, 1), Direction.RIGHT, true);
-		p[2][1] = new Position(new Posn(2, 1), Direction.DOWN, true);
-		p[0][2] = new Position(new Posn(0, 2), Direction.UP, true);
-		p[1][2] = new Position(new Posn(1, 2), Direction.LEFT, true);
-		p[2][2] = new Position(new Posn(2, 2), Direction.LEFT, true);
+		p[0][0] = new Position(new Posn(0, 0), Direction.EAST, true);
+		p[1][0] = new Position(new Posn(1, 0), Direction.EAST, true);
+		p[2][0] = new Position(new Posn(2, 0), Direction.SOUTH, true);
+		p[0][1] = new Position(new Posn(0, 1), Direction.WEST, true);
+		p[1][1] = new Position(new Posn(1, 1), Direction.EAST, true);
+		p[2][1] = new Position(new Posn(2, 1), Direction.SOUTH, true);
+		p[0][2] = new Position(new Posn(0, 2), Direction.NORTH, true);
+		p[1][2] = new Position(new Posn(1, 2), Direction.WEST, true);
+		p[2][2] = new Position(new Posn(2, 2), Direction.WEST, true);
 		// >>V
 		// <.V
 		// ^<<
 		Grid.setPositions(p);
-		GridItem o = new Oyster();
+		TrailItem o = new Oyster();
 		o.setPosn(new Posn(0, 0));
 		o.setPixelPosn(new Posn(15, 15));
 		o.setSpeed(1);
 		
-		GridItem ii = new InvasiveItem();
+		TrailItem ii = new InvasiveItem();
 		ii.setPosn(new Posn(0, 0));
 		ii.setPixelPosn(new Posn(15, 15));
 		ii.setSpeed(1);
 		
-		GridItem pol = new Pollutant();
+		TrailItem pol = new Pollutant();
 		pol.setPosn(new Posn(0, 0));
 		pol.setPixelPosn(new Posn(15, 15));
 		pol.setSpeed(1);
 		
-		GridItem larv = new Larvae();
+		TrailItem larv = new Larvae();
 		larv.setPosn(new Posn(0, 0));
 		larv.setPixelPosn(new Posn(15, 15));
 		larv.setSpeed(1);

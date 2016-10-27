@@ -1,4 +1,4 @@
-package cisc275_final;
+package model;
 import java.awt.*;
 import java.util.*;
 

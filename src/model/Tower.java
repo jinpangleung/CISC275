@@ -14,16 +14,25 @@ public abstract class Tower extends GridItem {
 		return this.color;
 	}
 	
-	public int getcooldownRemaining(){
+	public int getCooldownRemaining(){
 		return this.cooldownRemaining;
 	}
 	
 	public int getRange(){
 		return this.range;
 	}
-	
-	
-	
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public void setCooldownRemaining(int cooldownRemaining) {
+		this.cooldownRemaining = cooldownRemaining;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
 	//// Methods ////
 	public void ability(){
 		

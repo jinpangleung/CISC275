@@ -26,7 +26,18 @@ public class TrailItem extends GridItem {
 	public Color getColor(){
 		return this.color;
 	}
-	
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	public void setBad(boolean isBad) {
+		this.isBad = isBad;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
 	//// Methods ////
 	public void damage(){//we don't need this?
 		// TODO
