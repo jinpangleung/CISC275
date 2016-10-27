@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import model.BlueTower;
 import model.Color;
+import model.Posn;
 
 public class BlueTowerTest {
 
@@ -16,14 +17,14 @@ public class BlueTowerTest {
 		
 		//All true
 		assertEquals("Pass", Color.BLUE, blue.getColor());
-		assertEquals("Pass", 10, blue.getcooldownRemaining());
+		assertEquals("Pass", 10, blue.getCooldownRemaining());
 		assertEquals("Pass", 10, blue.getRange());
 		
 		//All false
 		assertEquals("Pass", Color.RED, blue.getColor());
-		assertEquals("Pass", 9, blue.getcooldownRemaining());
+		assertEquals("Pass", 9, blue.getCooldownRemaining());
 		assertEquals("Pass", 9, blue.getRange());
-		}
+		
 	
 	
 		//GridItem test and posn test
@@ -53,5 +54,5 @@ public class BlueTowerTest {
 		
 		
 		assertEquals("Pass", PosnTest, fml.getPosn());
-
+	}
 }

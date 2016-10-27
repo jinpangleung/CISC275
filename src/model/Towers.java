@@ -5,9 +5,9 @@ import java.awt.Color;
 public class Towers {
 	
 	//// Attributes ////
-	protected int numberOfGreenTowers; //remaining
-	protected int numberOfRedTowers; //remaining
-	protected int numberOfBlueTowers; //remaining
+	private int numberOfGreenTowers; //remaining
+	private int numberOfRedTowers; //remaining
+	private int numberOfBlueTowers; //remaining
 	
 	//// Getters ////
 	public int getNumberOfGreenTowers() {
@@ -18,6 +18,15 @@ public class Towers {
 	}
 	public int getNumberOfBlueTowers() {
 		return numberOfBlueTowers;
+	}
+	public void setNumberOfGreenTowers(int numberOfGreenTowers) {
+		this.numberOfGreenTowers = numberOfGreenTowers;
+	}
+	public void setNumberOfRedTowers(int numberOfRedTowers) {
+		this.numberOfRedTowers = numberOfRedTowers;
+	}
+	public void setNumberOfBlueTowers(int numberOfBlueTowers) {
+		this.numberOfBlueTowers = numberOfBlueTowers;
 	}
 	
 	//// Methods ////
