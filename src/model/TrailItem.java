@@ -67,7 +67,7 @@ public class TrailItem extends GridItem {
 		
 		// Check if new pixel position requires a change in grid position
 		Posn newCellPosn = Grid.getCellPosnFromPixelPosn(pixelPosn);
-		if(!(newCellPosn.equals(gridPosn))){
+		if(newCellPosn.compareTo(gridPosn) != 0){
 			gridPosn = newCellPosn;
 		}
 		
