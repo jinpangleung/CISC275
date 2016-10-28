@@ -39,9 +39,13 @@ public class OysterTest {
 		
 		myOyster.click();
 		
+		//All true
 		assertEquals("Pass", myOyster2, oyster);
 		assertEquals("Pass", myOyster2, GridItems);
+		assertEquals("Pass", 0, myOyster.getHealth());
 		
+		//All false
+		assertEquals("Pass", 1, myOyster.getHealth());
 		
 	}
 
