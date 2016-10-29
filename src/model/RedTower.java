@@ -5,11 +5,11 @@ public class RedTower extends Tower {
 	public RedTower(){
 		color = Color.RED;
 		cooldownRemaining = 10;
-		range = 10;
+		range = 1;
 	}
 	
 	@Override
 	public void ability(){
-		//TODO
+		System.out.println(color + " tower ability active");
 	}
 }
