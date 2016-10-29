@@ -30,13 +30,26 @@ public class Towers {
 	}
 	
 	//// Methods ////
-	public boolean towersRemaining(Color color){
-		return false;
-		// TODO
+	public int towersRemaining(Color color){
+		if(color == Color.BLUE){
+			return numberOfBlueTowers;
+		}
+		else if(color == Color.GREEN){
+			return numberOfGreenTowers;
+		}
+		else{
+			return numberOfRedTowers;
+		}
 	}
 	public void placeTower(Color color){ //-1 every time tower is placed
-		// TODO
+		if(color == Color.BLUE && this.towersRemaining(color) > 0){
+			numberOfBlueTowers--;
+		}
+		else if(color == Color.GREEN && this.towersRemaining(color) > 0){
+			numberOfGreenTowers--;
+		}
+		else if(color == Color.RED && this.towersRemaining(color) > 0){
+			numberOfRedTowers--;
+		}
 	}
-	
-
 }
