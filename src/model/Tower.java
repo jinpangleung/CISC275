@@ -6,7 +6,7 @@ public abstract class Tower extends GridItem {
 	protected Color color;
 	protected double cooldownRemaining;
 	protected int range;
-	
+	protected int stormCooldown;
 	
 	
 	////  Getters  ////
@@ -21,6 +21,11 @@ public abstract class Tower extends GridItem {
 	public int getRange(){
 		return this.range;
 	}
+	
+	public int getStormCooldown(){
+		return this.stormCooldown;
+	}
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}
@@ -32,10 +37,21 @@ public abstract class Tower extends GridItem {
 	public void setRange(int range) {
 		this.range = range;
 	}
+	
+	public void setStormCooldown(int sCD){
+		this.stormCooldown = sCD;
+	}
 
 	//// Methods ////
 	public void ability(){
 		
+	}
+	
+	public boolean onCooldown(){
+		if (cooldownRemaining > 0){
+			return true;
+		}
+		return false;
 	}
 	
 	@Override
