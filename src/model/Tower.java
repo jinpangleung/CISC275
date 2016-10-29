@@ -43,5 +43,8 @@ public abstract class Tower extends GridItem {
 		if(cooldownRemaining > 0){
 			cooldownRemaining = cooldownRemaining - elapsedTickTime;
 		}
+		else{
+			cooldownRemaining = 0;
+		}
 	}
 }
