@@ -1,4 +1,6 @@
-package model;
+package gabions;
+
+import model.GridItem;
 
 public abstract class Gabion extends GridItem {
 	
