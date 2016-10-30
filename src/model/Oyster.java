@@ -15,16 +15,18 @@ public class Oyster extends TrailItem{
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
+		Player p = Grid.getPlayer();
 		health--;
 		//speed--; shouldnt matter if we remove
 		if(health == 0){//probably don't need this, but gaurantees its 0
 			//object == null; //refer to comment below if remove doesnt work
-			Player.increaseOysterCount();
+			p.increaseOysterCount();
 			Collection<TrailItem> oyster = Grid.getTrailItems();
 			oyster.remove(this);
 			Collection<GridItem> items = Grid.getItems();
 			items.remove(this);
 		}
+		
 	}
 }
 /*
