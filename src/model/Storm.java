@@ -27,7 +27,7 @@ public class Storm {
 				damage = damage - gRandom.getHealth();
 			}
 			else if (damage - gRandom.getHealth() < 0){
-				gRandom.setHealth(gRandom.getHealth() - damage);
+				gLoop.next().setHealth(gRandom.getHealth() - damage);
 				damage = 0;
 			}
 			else if (damage <= 0){
