@@ -1,7 +1,7 @@
 package model;
 import java.awt.*;
 
-import view.Animation;
+import drawing.Animation;
 
 public abstract class GridItem {
 	
@@ -35,6 +35,6 @@ public abstract class GridItem {
 		// TODO
 	}
 	
-	abstract public void update(double elapsedTickTime);
+	abstract public void update();
 
 }
