@@ -36,6 +36,7 @@ public class Player {
 
 	public void update(double elapsedTickTime) {
 		gameTime = gameTime - elapsedTickTime;
+		//needs to update oystercount and number of each tower and keep updating as we use for our inventory
 	}
 
 }
