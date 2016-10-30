@@ -41,4 +41,5 @@ public class PixelGrid {
 	public static GridCell getGridCell(Posn p){
 		return getGridCell(p.getX(), p.getY());
 	}
+	
 }
