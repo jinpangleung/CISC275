@@ -1,9 +1,24 @@
 package model;
 
-public class Difficulty {
+import trailitems.*;
 
-	int spawnRate = 10;
+public class Difficulty {
 	
+	/**
+	 * Returns void
+	 * <p>
+	 * Look at the current Grid and decide how to scale difficulty and when to spawn new objects
+	 */
+	public void update(){
+		// TODO
+	}
+	
+	/**
+	 * Returns void
+	 * <p>
+	 * Use the difficulty and what has been spawned recently to decide
+	 * what needs to be spawned, avoid unwinnable scenarios
+	 */
 	public TrailItem spawn(){
 		int randomNum = (int)(Math.random() * 3); 
 		if(randomNum == 0){
@@ -19,8 +34,5 @@ public class Difficulty {
 			return new Pollutant(1);
 		}
 	}
-	
-	public void update(){
-		
-	}
+
 }
