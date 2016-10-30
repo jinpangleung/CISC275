@@ -1,4 +1,6 @@
-package model;
+package towers;
+
+import model.Color;
 
 public class RedTower extends Tower {
 
@@ -11,5 +13,11 @@ public class RedTower extends Tower {
 	@Override
 	public void ability(){
 		System.out.println(color + " tower ability active");
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }
