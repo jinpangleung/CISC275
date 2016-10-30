@@ -1,13 +1,15 @@
-package model;
+package trailitems;
 
 import java.util.Collection;
+
+import model.*;
 
 public class Larvae extends TrailItem {
 	//// Constructor ////
 	public Larvae(){
 		health = 1;
 		speed = 1;
-		color = color.WHITE;
+		color = Color.WHITE;
 		isBad = true; //dont click on the larvae!!!
 	}
 	
