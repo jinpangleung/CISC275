@@ -9,6 +9,10 @@ public abstract class Gabion extends GridItem {
 	public int getHealth(){
 		return this.health;
 	}
+	
+	public void setHealth(int x){
+		this.health = x;
+	}
 
 	public void update(double elapsedTickTime){
 		// do nothing
