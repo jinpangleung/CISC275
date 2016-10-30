@@ -9,9 +9,9 @@ import org.junit.Test;
 import model.Color;
 import model.Grid;
 import model.GridItem;
-import model.Larvae;
-import model.Oyster;
-import model.TrailItem;
+import trailitems.Larvae;
+import trailitems.Oyster;
+import trailitems.TrailItem;
 
 public class LarvaeTest {
 
