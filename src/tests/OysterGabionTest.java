@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.OysterGabion;
+import gabions.OysterGabion;
 
 public class OysterGabionTest {
 
@@ -13,10 +13,31 @@ public class OysterGabionTest {
 		OysterGabion og = new OysterGabion();
 		
 		//Pass
-		assertEquals("Pass", 3, og.getHealth());
+		assertEquals("Pass", 0, og.getHealth());
+		assertEquals("Pass", 0, og.getOysterCount());
+		
+		
+		og.OysterClicked();
 		
 		//Fail
-		assertEquals("Pass", 1, og.getHealth());	
+		assertEquals("Pass", 1, og.getHealth());
+		assertEquals("Pass", 0, og.getOysterCount());
+		
+		og.OysterClicked();
+		og.OysterClicked();
+		og.OysterClicked();
+		og.OysterClicked();
+		
+		//Fail
+		assertEquals("Pass", 1, og.getHealth());
+		assertEquals("Pass", 1, og.getOysterCount());
+		
+		og.OysterClicked();
+		//Pass
+		assertEquals("Pass", 1, og.getHealth());
+		assertEquals("Pass", 0, og.getOysterCount());
+		
+		
 	}
 
 }
