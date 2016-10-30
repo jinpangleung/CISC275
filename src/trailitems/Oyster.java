@@ -1,6 +1,8 @@
-package model;
+package trailitems;
 
 import java.util.Collection;
+
+import model.*;
 
 public class Oyster extends TrailItem{
 	
