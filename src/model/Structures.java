@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Color;
 
-public class Towers {
+public class Structures {
 	
 	//// Attributes ////
 	private int numberOfGreenTowers; //remaining
