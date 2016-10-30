@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.BlueTower;
+import towers.BlueTower;
 import model.Color;
 import model.Posn;
 
