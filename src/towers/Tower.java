@@ -1,4 +1,7 @@
-package model;
+package towers;
+
+import model.Color;
+import model.GridItem;
 
 public abstract class Tower extends GridItem {
 	
@@ -54,7 +57,6 @@ public abstract class Tower extends GridItem {
 		return false;
 	}
 	
-	@Override
 	public void update(double elapsedTickTime){
 		if(cooldownRemaining > 0){
 			cooldownRemaining = cooldownRemaining - elapsedTickTime;
