@@ -3,7 +3,7 @@ package model;
 public class Player {
 	private int estuaryHealth;
 	private double gameTime;
-	private int OysterCount;
+	private int OysterCount = 0;
 	
 	
 	public void increaseOysterCount(){
