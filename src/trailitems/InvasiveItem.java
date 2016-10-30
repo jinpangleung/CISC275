@@ -1,6 +1,11 @@
-package model;
+package trailitems;
 
 import java.util.Collection;
+
+import model.Color;
+import model.Grid;
+import model.GridItem;
+import model.Player;
 
 public class InvasiveItem extends TrailItem {
 	
