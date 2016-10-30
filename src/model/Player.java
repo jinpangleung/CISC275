@@ -8,7 +8,11 @@ public class Player {
 	
 	public void increaseOysterCount(){
 		OysterCount++;
+		Collection<GridItem> allItems = Grid.getItems();
+		Collection<Gabion> gabion = Grid.getGabions();
 		if (OysterCount == 4){
+			allItems.add(new OysterGabion());
+			gabion.add(new OysterGabion());
 			OysterCount = 0;
 			//dont need gabion count, will be added in collections
 		}
