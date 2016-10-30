@@ -1,7 +1,7 @@
-package model;
+package trailitems;
 
+import model.*;
 
-//Abstract class
 public class TrailItem extends GridItem {
 	
 	//// Attributes ////
@@ -70,6 +70,11 @@ public class TrailItem extends GridItem {
 		if(newCellPosn.compareTo(gridPosn) != 0){
 			gridPosn = newCellPosn;
 		}
+		
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
 		
 	}
 
