@@ -13,7 +13,15 @@ public class Pollutant extends TrailItem {
 	
 	@Override
 	public void click(){//checking if in radius should be done by tower
+		Player p = Grid.getPlayer();
 		health--;
+		if(isBad == true){//makes sure it is NOT bad to click on
+			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
+			System.out.println("isBad should be set to False, check out pollutant class");
+		}
+		else{
+			p.setEstuaryHealth(p.getEstuaryHealth() + 5);//very good to destroy pullutant
+		}
 		if (health > 0){//health can be upto 3
 			//do nothing
 			System.out.println("Health of pollutant = " + health);
