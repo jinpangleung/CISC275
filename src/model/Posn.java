@@ -39,7 +39,6 @@ public class Posn implements Comparable<Posn>{
 		this.setY(this.getY() + yVal);
 	}
 
-	@Override
 	public int compareTo(Posn o) {
 		// Currently compares based on Euclidian Distance
 		return (int) Math.signum(Math.hypot((x - o.getX()), (y - o.getY())));
