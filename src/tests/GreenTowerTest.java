@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import model.Color;
-import model.GreenTower;
+import towers.GreenTower;
 
 public class GreenTowerTest {
 
