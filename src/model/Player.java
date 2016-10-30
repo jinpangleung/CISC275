@@ -1,5 +1,9 @@
 package model;
 
+import gabions.*;
+
+import java.util.Collection;
+
 public class Player {
 	private int estuaryHealth;
 	private double gameTime;
