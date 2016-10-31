@@ -8,7 +8,7 @@ public abstract class GridItem {
 	//// Attributes ////
 	protected Posn gridPosn;
 	protected Posn pixelPosn;
-	private Animation animation;
+	protected Animation animation;
 	
 	//// Setters and Getters ////
 	public Posn getPosn(){
@@ -32,7 +32,7 @@ public abstract class GridItem {
 	
 	//// Methods ////
 	public void draw(Graphics g){
-		// TODO
+		animation.draw(g, pixelPosn);
 	}
 	
 	abstract public void update();

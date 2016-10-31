@@ -35,4 +35,19 @@ public class GridCell {
 	public void setTrail(boolean isTrail) {
 		this.isTrail = isTrail;
 	}
+	
+	public String toString(){
+		String str = "";
+		switch(direction){
+		case NORTH: str += "North"; break;
+		case EAST: str += "South"; break;
+		case WEST: str += "West"; break;
+		case SOUTH: str += "South"; break;
+		}
+		str += " " + posn.toString();
+		return str;
+	}
+	
+	
+
 }

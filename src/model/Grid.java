@@ -2,6 +2,7 @@ package model;
 import java.awt.*;
 import java.util.*;
 
+import drawing.ImageLibrary;
 import gabions.Gabion;
 import towers.Tower;
 import trailitems.TrailItem;
@@ -13,63 +14,93 @@ import trailitems.TrailItem;
 public class Grid {
 	
 ////Attributes ////
-	static private GridCell[][] cells;
-	static private Collection<GridItem> items;
-	static private Collection<Tower> towers;
-	static private Collection<TrailItem> trailItems;
-	static private Collection<Gabion> gabions;
-	static private Player player;
-	static private PixelGrid pixelGrid;
-	static private Difficulty difficulty;
-	private final int GRID_SIZE = 10;
-	static private Posn[] posnByDirection;
+	private DirectionGrid cells;
+	private Collection<GridItem> items;
+	private Collection<Tower> towers;
+	private Collection<TrailItem> trailItems;
+	private Collection<Gabion> gabions;
+	private Collection<Path> paths;
+	private Player player;
+	private PixelGrid pixelGrid;
+	private Difficulty difficulty;
+	private Posn[] posnByDirection;
+	
+	static private Grid grid = null;
 	//// Attributes ////
 	
+	static public Grid getInstance(){
+		if(grid == null){
+			grid = new Grid();
+		}
+		return grid;
+	}
+	
 	//// Constructor ////
-	public Grid(int screenWidth, int screenHeight){
-		cells = new GridCell[GRID_SIZE][GRID_SIZE];
+	private Grid(){
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		cells = new DirectionGrid();
+		System.out.println(cells);
 		items = new ArrayList<GridItem>();
 		towers = new ArrayList<Tower>();
 		trailItems = new ArrayList<TrailItem>();
 		gabions = new ArrayList<Gabion>();
+		paths = new ArrayList<Path>();
 		player = new Player();
-		pixelGrid = new PixelGrid(screenWidth, screenHeight, GRID_SIZE);
+		pixelGrid = new PixelGrid((int) d.getWidth(), (int) d.getHeight(), cells.getGridSize());
 		difficulty = new Difficulty();
 		posnByDirection = new Posn[4];
 		posnByDirection[Direction.EAST.ordinal()] = new Posn(1, 0);
 		posnByDirection[Direction.NORTH.ordinal()] = new Posn(0, -1);
 		posnByDirection[Direction.WEST.ordinal()] = new Posn(-1, 0);
 		posnByDirection[Direction.SOUTH.ordinal()] = new Posn(0, 1);
+		new ImageLibrary();
 	}
 	
 	//// Getters and Setters ////
-	static public GridCell[][] getCells(){
+	public DirectionGrid getCells(){
 		return cells;
 	}
-	static public Collection<GridItem> getItems(){
+	public Collection<GridItem> getItems(){
 		return items;
 	}
-	static public Player getPlayer(){
+	public Player getPlayer(){
 		return player;
 	}
-	static public Collection<Tower> getTowers(){
+	public Collection<Tower> getTowers(){
 		return towers;
 	}
-	static public Collection<TrailItem> getTrailItems(){
+	public Collection<TrailItem> getTrailItems(){
 		return trailItems;
 	}
-	static public Collection<Gabion> getGabions(){
+	public Collection<Gabion> getGabions(){
 		return gabions;
 	}
-	static public PixelGrid getPixelGrid(){
+	public PixelGrid getPixelGrid(){
 		return pixelGrid;
 	}
-	static public int getGridSize(){
-		return cells.length;
+	public int getGridSize(){
+		return cells.getGridSize();
 	}
 	
-	static public void setCells(GridCell[][] p){
+	public void setCells(DirectionGrid p){
 		cells = p;
+	}
+	
+	public GridCell getCellAt(Posn p){
+		return cells.gridCellAt(p);
+	}
+	
+	public Collection<Path> getPaths(){
+		return paths;
+	}
+	
+	public void setPaths(Collection<Path> p){
+		paths = p;
+	}
+	
+	public Posn getCellPosnFromPixelPosn(Posn pixel){
+		GridCell gc = pixelGrid.getGridCell(pixel.getX(), pixel.getY());
+		return gc.getPosn();
 	}
 	//// Getters and Setters ////
 	
@@ -81,10 +112,18 @@ public class Grid {
 	 *
 	 * @return      void
 	 */
-	static public void update(){
+	public void update(){
 		// Iterate through and update grid items
 		for(GridItem i : items){
 			i.update();
+		}
+		// Iterate through all of the paths
+		Iterator<Path> i = paths.iterator();
+		while (i.hasNext()) {
+		   Path p = i.next(); // must be called before you can call i.remove()
+		   if(p.update()){
+			   i.remove();
+		   }
 		}
 		// Update player
 		player.update();
@@ -101,10 +140,17 @@ public class Grid {
 	 * @param  g The Graphics to draw from.
 	 * @return      Void
 	 */
-	static public void draw(Graphics g){
+	public void draw(Graphics g){
 		// TODO
 		// Draw estuary
 		// Draw grid items
+		cells.draw(g);
+		for(TrailItem item : trailItems){
+			item.draw(g);
+		}
+		for(Path p : paths){
+			p.getGridItem().draw(g);
+		}
 	}
 	
 	/**
@@ -115,10 +161,33 @@ public class Grid {
 	 * @param mouseX
 	 * @param mouseY
 	 */
-	static public void clickHandler(int mouseX, int mouseY){
+	public void clickHandler(int mouseX, int mouseY){
 		// TODO
 		// Find which item was clicked
 		// Have that item handle it
+		// Step 1 : Check if the grid was clicked or something else
+		// For now assume that the grid was clicked
+		// Step 2 : Check what in the grid was clicked
+		// For now, it will be inefficient
+		System.out.println(new Posn(mouseX, mouseY));
+		for(TrailItem ti : trailItems){
+			int imageWidth = ti.getAnimation().getImageWidth();
+			int imageHeight = ti.getAnimation().getImageHeight();
+			int xOffset = ti.getAnimation().getXOffset();
+			int yOffset = ti.getAnimation().getYOffset();
+			int itemX = ti.getPixelPosn().getX();
+			int itemY = ti.getPixelPosn().getY();
+			
+			int left = itemX - xOffset;
+			int right = itemX + (imageWidth - xOffset);
+			int top = itemY - yOffset;
+			int bottom = itemY + (imageHeight - yOffset);
+			
+			if(left <= mouseX && right >= mouseX && top <= mouseY && bottom >= mouseY){
+				ti.click();
+				return;
+			}
+		}
 	}
 	
 	/**
@@ -129,7 +198,7 @@ public class Grid {
 	 * 
 	 * @param direction
 	 */
-	static public Posn getPosnFromDirection(Direction direction){
+	public Posn getPosnFromDirection(Direction direction){
 		return posnByDirection[direction.ordinal()];
 	}
 	
@@ -140,7 +209,7 @@ public class Grid {
 	 * 
 	 * @param ti
 	 */
-	static public void addTrailItems(TrailItem ti){
+	public void addTrailItems(TrailItem ti){
 		items.add(ti);
 		trailItems.add(ti);
 	}
@@ -152,8 +221,8 @@ public class Grid {
 	 * 
 	 * @param posn
 	 */
-	static public GridCell getCellFromPosn(Posn posn){
-		return cells[posn.getX()][posn.getY()];
+	public GridCell getCellFromPosn(Posn posn){
+		return cells.gridCellAt(posn);
 	}
 	
 	/**
@@ -164,8 +233,26 @@ public class Grid {
 	 * 
 	 * @param pixelPosn
 	 */
-	static public GridCell getCellFromPixelPosn(Posn pixelPosn){
+	public GridCell getCellFromPixelPosn(Posn pixelPosn){
 		return pixelGrid.getGridCell(pixelPosn);
+	}
+	
+	/**
+	 * Return void
+	 * <p>
+	 * Add grid item to the grid and into the correct collections
+	 * 
+	 * @param gi
+	 */
+	public void addGridItem(GridItem gi){
+		if(gi.getClass().getSuperclass() == TrailItem.class){
+			items.add((TrailItem) gi);
+			trailItems.add((TrailItem) gi);
+		}
+	}
+	
+	public void addPath(Path p){
+		paths.add(p);
 	}
 	//// Methods ////
 

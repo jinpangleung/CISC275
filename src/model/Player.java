@@ -1,29 +1,20 @@
 package model;
 
-import gabions.*;
-
-import java.util.Collection;
-
 public class Player {
 	private int estuaryHealth;
-	private double gameTime;
-	private int OysterCount = 0;
+	private long startTime;
+	private long gameTime;
+	private int oysterCount;
 	
-	
-	public void increaseOysterCount(){
-		OysterCount++;
-		Collection<GridItem> allItems = Grid.getItems();
-		Collection<Gabion> gabion = Grid.getGabions();
-		if (OysterCount == 4){
-			allItems.add(new OysterGabion());
-			gabion.add(new OysterGabion());
-			OysterCount = 0;
-			//dont need gabion count, will be added in collections
-		}
+	public Player(){
+		estuaryHealth = 50; // ranging from 0 -> 100, start right in the middle
+		oysterCount = 0;
+		startTime = System.currentTimeMillis();
+		gameTime = 0;
 	}
 	
-	public int getOysterCount(){
-		return OysterCount;
+	public long getStartTime(){
+		return startTime;
 	}
 	
 	public int getEstuaryHealth() {
@@ -34,17 +25,26 @@ public class Player {
 		this.estuaryHealth = estuaryHealth;
 	}
 
-	public double getGameTime() {
+	public long getGameTime() {
 		return gameTime;
 	}
 
-	public void setGameTime(double gameTime) {
+	public void setGameTime(long gameTime) {
 		this.gameTime = gameTime;
 	}
-
-	public void update(double elapsedTickTime) {
-		gameTime = gameTime - elapsedTickTime;
-		//needs to update oystercount and number of each tower and keep updating as we use for our inventory
+	
+	public int getOysterCount(){
+		return oysterCount;
 	}
+
+	public void update() {
+		gameTime = System.currentTimeMillis() - startTime;
+	}
+	
+	public void increaseOysterCount(){
+		oysterCount++;
+	}
+	
+	
 
 }
