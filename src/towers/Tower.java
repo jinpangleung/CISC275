@@ -7,9 +7,9 @@ public abstract class Tower extends GridItem {
 	
 	//// Attributes ////
 	protected Color color;
-	protected double cooldownRemaining;
+	protected int cooldownRemaining;
 	protected int range;
-	protected int stormCooldown;
+	
 	
 	
 	////  Getters  ////
@@ -17,7 +17,7 @@ public abstract class Tower extends GridItem {
 		return this.color;
 	}
 	
-	public double getCooldownRemaining(){
+	public int getCooldownRemaining(){
 		return this.cooldownRemaining;
 	}
 	
@@ -25,44 +25,37 @@ public abstract class Tower extends GridItem {
 		return this.range;
 	}
 	
-	public int getStormCooldown(){
-		return this.stormCooldown;
+	public void setCooldownRemaining(int cd){
+		this.cooldownRemaining = cd;
 	}
 	
-	public void setColor(Color color) {
-		this.color = color;
-	}
-
-	public void setCooldownRemaining(int cooldownRemaining) {
-		this.cooldownRemaining = cooldownRemaining;
-	}
-
-	public void setRange(int range) {
-		this.range = range;
+	public String toString(){
+		String str = "";
+		switch(color){
+		case RED: str += "Red Tower "; break;
+		case BLUE: str += "Blue Tower "; break;
+		case GREEN: str += "Green Tower "; break;
+		default: str += "Undefined Color Tower "; break;
+		}
+		str += "Grid Posn: " + gridPosn.toString() + " Pixel Posn " + pixelPosn.toString() + " ";
+		str += "Cooldown Remaining = " + Integer.toString(cooldownRemaining);
+		return str;
 	}
 	
-	public void setStormCooldown(int sCD){
-		this.stormCooldown = sCD;
-	}
-
+	
+	
 	//// Methods ////
 	public void ability(){
 		
 	}
 	
-	public boolean onCooldown(){
-		if (cooldownRemaining > 0){
-			return true;
-		}
-		return false;
-	}
-	
-	public void update(double elapsedTickTime){
+	@Override
+	public void update(){
+		//TODO update should probably pass around elapsedTickTime, add after controller is implemented - Gifan
 		if(cooldownRemaining > 0){
-			cooldownRemaining = cooldownRemaining - elapsedTickTime;
-		}
-		else{
-			cooldownRemaining = 0;
+			cooldownRemaining--;
+		} else {
+			ability();
 		}
 	}
 }
