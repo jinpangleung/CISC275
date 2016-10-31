@@ -15,12 +15,48 @@ public class Animation {
 	private int imageWidth;
 	private int imageHeight;
 	
+	// Create new animation with specific pixel offsets
+	public Animation(String sprite, int xOffset, int yOffset){
+		this.sprites = new String[1];
+		this.sprites[0] = sprite;
+		this.index = 0;
+		this.length = 1;
+		this.xOffset = xOffset;
+		this.yOffset = yOffset;
+		BufferedImage img = ImageLibrary.getImage(sprite);
+		this.imageWidth = img.getWidth();
+		this.imageHeight = img.getHeight();
+	}
+	
+	// Create a new Animation using generic offsets
+	public Animation(String sprite, Offset xOff, Offset yOff){
+		this.sprites = new String[1];
+		this.sprites[0] = sprite;
+		this.index = 0;
+		this.length = 1;
+		BufferedImage img = ImageLibrary.getImage(sprite);
+		this.imageWidth = img.getWidth();
+		this.imageHeight = img.getHeight();
+		switch(xOff){
+		case CENTER: this.xOffset = imageWidth / 2; break;
+		}
+		switch(yOff){
+		case CENTER: this.yOffset = imageHeight / 2; break;
+		}
+	}
+	
 	//// Getters and Setters ////
 	public int getImageWidth(){
 		return imageWidth;
 	}
 	public int getImageHeight(){
 		return imageHeight;
+	}
+	public int getXOffset(){
+		return xOffset;
+	}
+	public int getYOffset(){
+		return yOffset;
 	}
 	
 	//// Methods ////
