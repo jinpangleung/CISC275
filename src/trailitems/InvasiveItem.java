@@ -1,11 +1,8 @@
 package trailitems;
 
 import java.util.Collection;
-
-import model.Color;
-import model.Grid;
-import model.GridItem;
-import model.Player;
+import drawing.*;
+import model.*;
 
 public class InvasiveItem extends TrailItem {
 	
@@ -13,15 +10,16 @@ public class InvasiveItem extends TrailItem {
 		health = 1;
 		speed = 1;
 		isBad = false;
-		color = Color.RED;
+		color = Color.GREEN;
+		animation = new Animation("invasive_item", Offset.CENTER, Offset.CENTER);
 	}
 	
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
-		Player p = Grid.getPlayer();
+		Player p = Grid.getInstance().getPlayer();
 		health--;
-		if(isBad == true){//makes sure it is NOT bad to click on
+		if(isBad){//makes sure it is NOT bad to click on
 			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
 			System.out.println("isBad should be set to False, check out InvasiveItem class");
 		}
@@ -32,9 +30,9 @@ public class InvasiveItem extends TrailItem {
 			System.out.println("The health (invasiveitem) should not be above 1 after click");
 		}
 		else if(health == 0){//gaurantees its 0, removes item
-			Collection<TrailItem> invasiveitem = Grid.getTrailItems();
+			Collection<TrailItem> invasiveitem = Grid.getInstance().getTrailItems();
 			invasiveitem.remove(this);
-			Collection<GridItem> items = Grid.getItems();
+			Collection<GridItem> items = Grid.getInstance().getItems();
 			items.remove(this);
 		}
 		else{

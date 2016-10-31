@@ -2,6 +2,8 @@ package trailitems;
 
 import java.util.Collection;
 
+import drawing.Animation;
+import drawing.Offset;
 import model.*;
 
 public class Oyster extends TrailItem{
@@ -12,23 +14,22 @@ public class Oyster extends TrailItem{
 		speed = 1;
 		color = Color.BLUE;
 		isBad = false;
+		animation = new Animation("oyster", Offset.CENTER, Offset.CENTER);
 	}
 	
 	//// Methods ////
 	@Override
 	public void click(){//checking if in radius should be done by tower
-		Player p = Grid.getPlayer();
 		health--;
-		//speed--; shouldnt matter if we remove
+		//speed--; shouldn't matter if we remove
 		if(health == 0){//probably don't need this, but gaurantees its 0
 			//object == null; //refer to comment below if remove doesnt work
-			p.increaseOysterCount();
-			Collection<TrailItem> oyster = Grid.getTrailItems();
+			Grid.getInstance().getPlayer().increaseOysterCount();
+			Collection<TrailItem> oyster = Grid.getInstance().getTrailItems();
 			oyster.remove(this);
-			Collection<GridItem> items = Grid.getItems();
+			Collection<GridItem> items = Grid.getInstance().getItems();
 			items.remove(this);
 		}
-		
 	}
 }
 /*

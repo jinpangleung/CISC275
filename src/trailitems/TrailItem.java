@@ -1,7 +1,11 @@
 package trailitems;
 
-import model.*;
+import model.Color;
+import model.Grid;
+import model.GridItem;
+import model.Posn;
 
+//Abstract class
 public class TrailItem extends GridItem {
 	
 	//// Attributes ////
@@ -26,31 +30,23 @@ public class TrailItem extends GridItem {
 	public Color getColor(){
 		return this.color;
 	}
-	public void setHealth(int health) {
-		this.health = health;
+	public void setSpeed(int s){
+		this.speed = s;
 	}
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-	public void setBad(boolean isBad) {
-		this.isBad = isBad;
-	}
-	public void setColor(Color color) {
-		this.color = color;
-	}
+	
 	//// Methods ////
-	public void damage(){//we don't need this?
+	public void damage(){
 		// TODO
 	}
-	public void click(){//click methods inside specific trail items will override our nothingness
+	public void click(){
 		// TODO
 	}
 	
 	@Override
-	public void update(double elapsedTickTime) {
-		// TODO Fix method calls when methods become implemented - Gifan
+	public void update() {
 		// Adjust pixel position based on position of the grid cell and speed
-		switch (Grid.getCellFromPosn(gridPosn).getDirection()){
+		
+		switch (Grid.getInstance().getCellAt(gridPosn).getDirection()){
 			case NORTH:
 				pixelPosn.setY(pixelPosn.getY() - speed);
 				break;
@@ -63,19 +59,23 @@ public class TrailItem extends GridItem {
 			case WEST:
 				pixelPosn.setX(pixelPosn.getX() - speed);
 				break;
-		}
-		
+		}		
 		// Check if new pixel position requires a change in grid position
-		Posn newCellPosn = Grid.getCellPosnFromPixelPosn(pixelPosn);
-		if(newCellPosn.compareTo(gridPosn) != 0){
-			gridPosn = newCellPosn;
-		}
+		Posn newCellPosn = Grid.getInstance().getCellPosnFromPixelPosn(pixelPosn);
+		gridPosn = newCellPosn;
+		
 		
 	}
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	
+	public String toString(){
+		String str = "";
+		str += this.getClass();
+		str += " ";
+		str += Integer.toString(health) + " ";
+		str += gridPosn.toString();
+		str += " ";
+		str += pixelPosn.toString();
+		return str;
 	}
 
 }

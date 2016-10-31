@@ -1,8 +1,8 @@
 package trailitems;
 
-import java.util.Collection;
-
-import model.*;
+import drawing.Animation;
+import drawing.Offset;
+import model.Color;
 
 public class Pollutant extends TrailItem {
 	
@@ -11,31 +11,17 @@ public class Pollutant extends TrailItem {
 		speed = 1;
 		isBad = false;
 		color = Color.RED;
+		animation = new Animation("pollutant", Offset.CENTER, Offset.CENTER);
 	}
 	
 	@Override
 	public void click(){//checking if in radius should be done by tower
-		Player p = Grid.getPlayer();
 		health--;
-		if(isBad == true){//makes sure it is NOT bad to click on
-			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
-			System.out.println("isBad should be set to False, check out pollutant class");
-		}
-		else{
-			p.setEstuaryHealth(p.getEstuaryHealth() + 5);//very good to destroy pullutant
-		}
 		if (health > 0){//health can be upto 3
 			//do nothing
-			System.out.println("Health of pollutant = " + health);
-		}
-		else if (health == 0){//gaurantees health is 0
-			Collection<TrailItem> pollutant = Grid.getTrailItems();
-			pollutant.remove(this);
-			Collection<GridItem> items = Grid.getItems();
-			items.remove(this);
 		}
 		else{
-			System.out.println("The health (pollutant) should never be below 0");
+			//set object to null to remove
 		}
 	}
 }
