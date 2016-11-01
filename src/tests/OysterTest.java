@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import model.Color;
+import model.GridColor;
 import model.Grid;
 import model.GridItem;
 import trailitems.Oyster;
@@ -18,8 +18,8 @@ public class OysterTest {
 	public void test() {
 		Oyster myOyster = new Oyster();
 		Oyster myOyster2 = new Oyster();
-		Collection<TrailItem> oyster = Grid.getTrailItems();
-		Collection<GridItem> GridItems = Grid.getItems();
+		Collection<TrailItem> oyster = Grid.getInstance().getTrailItems();
+		Collection<GridItem> GridItems = Grid.getInstance().getItems();
 		oyster.add(myOyster);
 		oyster.add(myOyster2);
 		GridItems.add(myOyster);
@@ -27,13 +27,13 @@ public class OysterTest {
 		
 		// / / / ALL TRUE / / / //
 		assertEquals("Pass",1, myOyster.getHealth());
-		assertEquals("Pass",Color.BLUE, myOyster.getColor());
+		assertEquals("Pass",GridColor.BLUE, myOyster.getColor());
 		assertEquals("Pass",1, myOyster.getSpeed());
 		assertEquals("Pass",false, myOyster.getIsBad());
 		
 		// / / / ALL FALSE / / / //
 		assertEquals("Pass",0, myOyster.getHealth());
-		assertEquals("Pass",Color.GREEN, myOyster.getColor());
+		assertEquals("Pass",GridColor.GREEN, myOyster.getColor());
 		assertEquals("Pass",0, myOyster.getSpeed());
 		assertEquals("Pass",true, myOyster.getIsBad());
 		
