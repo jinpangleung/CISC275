@@ -1,43 +1,81 @@
 package trailitems;
 
-import java.util.Collection;
-import drawing.*;
-import model.*;
+import model.GridColor;
+import model.Grid;
+import model.GridItem;
+import model.Posn;
 
-public class InvasiveItem extends TrailItem {
+//Abstract class
+public class TrailItem extends GridItem {
 	
-	public InvasiveItem(){
-		health = 1;
-		speed = 1;
-		isBad = false;
-		color = Color.GREEN;
-		animation = new Animation("invasive_item", Offset.CENTER, Offset.CENTER);
+	//// Attributes ////
+	protected int health;
+	protected int speed;
+	protected boolean isBad; //is bad when you click on it
+	protected GridColor color;
+	
+	//// Constants ////
+	protected final int CLICKDAMAGE = 1;
+	
+	//// Getters ////
+	public int getHealth(){
+		return this.health;
+	}
+	public int getSpeed(){
+		return this.speed;
+	}
+	public boolean getIsBad(){
+		return this.isBad;
+	}
+	public GridColor getColor(){
+		return this.color;
+	}
+	public void setSpeed(int s){
+		this.speed = s;
 	}
 	
 	//// Methods ////
-	@Override
-	public void click(){//checking if in radius should be done by tower
-		Player p = Grid.getInstance().getPlayer();
-		health--;
-		if(isBad){//makes sure it is NOT bad to click on
-			p.setEstuaryHealth(p.getEstuaryHealth() - 5);
-			System.out.println("isBad should be set to False, check out InvasiveItem class");
-		}
-		else{
-			p.setEstuaryHealth(p.getEstuaryHealth() + 5);//very good to destroy invasive items
-		}
-		if(health > 0){
-			System.out.println("The health (invasiveitem) should not be above 1 after click");
-		}
-		else if(health == 0){//gaurantees its 0, removes item
-			Collection<TrailItem> invasiveitem = Grid.getInstance().getTrailItems();
-			invasiveitem.remove(this);
-			Collection<GridItem> items = Grid.getInstance().getItems();
-			items.remove(this);
-		}
-		else{
-			System.out.println("The health (invasiveitem) should never be below 0");
-		}
+	public void damage(){
+		// TODO
+	}
+	public void click(){
+		// TODO
 	}
 	
+	@Override
+	public void update() {
+		// Adjust pixel position based on position of the grid cell and speed
+		
+		switch (Grid.getInstance().getCellAt(gridPosn).getDirection()){
+			case NORTH:
+				pixelPosn.setY(pixelPosn.getY() - speed);
+				break;
+			case SOUTH:
+				pixelPosn.setY(pixelPosn.getY() + speed);
+				break;
+			case EAST:
+				pixelPosn.setX(pixelPosn.getX() + speed);
+				break;
+			case WEST:
+				pixelPosn.setX(pixelPosn.getX() - speed);
+				break;
+		}		
+		// Check if new pixel position requires a change in grid position
+		Posn newCellPosn = Grid.getInstance().getCellPosnFromPixelPosn(pixelPosn);
+		gridPosn = newCellPosn;
+		
+		
+	}
+	
+	public String toString(){
+		String str = "";
+		str += this.getClass();
+		str += " ";
+		str += Integer.toString(health) + " ";
+		str += gridPosn.toString();
+		str += " ";
+		str += pixelPosn.toString();
+		return str;
+	}
+
 }
