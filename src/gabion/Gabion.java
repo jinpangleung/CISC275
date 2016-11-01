@@ -1,4 +1,4 @@
-package gabions;
+package gabion;
 
 import model.GridItem;
 
