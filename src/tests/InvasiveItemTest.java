@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import model.Color;
+import model.GridColor;
 import model.Grid;
 import model.GridItem;
 import trailitems.InvasiveItem;
@@ -19,8 +19,8 @@ public class InvasiveItemTest {
 	public void test() {
 		InvasiveItem TestInvasiveItem = new InvasiveItem();
 		InvasiveItem TestInvasiveItem2 = new InvasiveItem();
-		Collection<TrailItem> invasive = Grid.getTrailItems();
-		Collection<GridItem> GridItems3 = Grid.getItems();
+		Collection<TrailItem> invasive = Grid.getInstance().getTrailItems();
+		Collection<GridItem> GridItems3 = Grid.getInstance().getItems();
 		invasive.add(TestInvasiveItem);
 		invasive.add(TestInvasiveItem2);
 		GridItems3.add(TestInvasiveItem);
@@ -31,13 +31,13 @@ public class InvasiveItemTest {
 		assertEquals("Pass", 1, TestInvasiveItem.getHealth());
 		assertEquals("Pass", 1, TestInvasiveItem.getSpeed());
 		assertEquals("Pass", false, TestInvasiveItem.getIsBad());
-		assertEquals("Pass", Color.GREEN, TestInvasiveItem.getColor());
+		assertEquals("Pass", GridColor.GREEN, TestInvasiveItem.getColor());
 		
 		//All false
 		assertEquals("Pass", 2, TestInvasiveItem.getHealth());
 		assertEquals("Pass", 0, TestInvasiveItem.getSpeed());
 		assertEquals("Pass", true, TestInvasiveItem.getIsBad());
-		assertEquals("Pass", Color.BLUE, TestInvasiveItem.getColor());
+		assertEquals("Pass", GridColor.BLUE, TestInvasiveItem.getColor());
 		
 		
 		
