@@ -6,12 +6,25 @@ import drawing.Animation;
 import drawing.Offset;
 import model.*;
 
+/**
+ * 
+ * Larvae are stuff that can be picked up anywhere, but you aren't supposed to pick any of them up,
+ * since it is suppose to be in the estuary
+ * 
+ * @author Roy Cheng
+ * @version 1
+ * @attributes health - health of the trailitems
+ * @attributes speed - how fast they travel in the river
+ * @attributes isBad - if it is bad to click on it
+ * 
+ */
+
 public class Larvae extends TrailItem {
 	//// Constructor ////
 	public Larvae(){
 		health = 1;
 		speed = 1;
-		gridColor = GridColor.WHITE;
+		color = GridColor.YELLOW;
 		isBad = true; //dont click on the larvae!!!
 		animation = new Animation("larvae", Offset.CENTER, Offset.CENTER);
 	}
