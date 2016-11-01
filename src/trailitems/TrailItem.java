@@ -6,7 +6,7 @@ import model.GridItem;
 import model.Posn;
 
 //Abstract class
-public class TrailItem extends GridItem {
+public abstract class TrailItem extends GridItem {
 	
 	//// Attributes ////
 	protected int health;
