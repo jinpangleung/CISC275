@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import gabions.OysterGabion;
+import gabion.OysterGabion;
 
 public class OysterGabionTest {
 
