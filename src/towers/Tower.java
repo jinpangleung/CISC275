@@ -1,19 +1,19 @@
 package towers;
 
-import model.Color;
+import model.GridColor;
 import model.GridItem;
 
 public abstract class Tower extends GridItem {
 	
 	//// Attributes ////
-	protected Color color;
+	protected GridColor color;
 	protected int cooldownRemaining;
 	protected int range;
 	
 	
 	
 	////  Getters  ////
-	public Color getColor(){
+	public GridColor getColor(){
 		return this.color;
 	}
 	
