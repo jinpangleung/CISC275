@@ -13,7 +13,7 @@ class GridTest {
 
 	@Test
 	public void test() {
-		Grid g = new Grid(80, 60);
+		Grid g = new Grid();
 		GridCell[][] p = new GridCell[3][3];
 		p[0][0] = new GridCell(new Posn(0, 0), Direction.EAST, true);
 		p[1][0] = new GridCell(new Posn(1, 0), Direction.EAST, true);
@@ -27,7 +27,7 @@ class GridTest {
 		// >>V
 		// <.V
 		// ^<<
-		Grid.setCells(p);
+		g.setCells(p);
 		TrailItem o = new Oyster();
 		o.setPosn(new Posn(0, 0));
 		o.setPixelPosn(new Posn(15, 15));
@@ -53,7 +53,7 @@ class GridTest {
 		tow.setPixelPosn(new Posn(16, 16));
 		tow.setCooldownRemaining(1);
 		
-		Grid.update();
+		g.update();
 		
 		assertEquals("Oyster Update1", o.getPosn().getX(), 0);
 		assertEquals("Oyster Update1", o.getPosn().getY(), 0);
@@ -82,7 +82,7 @@ class GridTest {
 		assertEquals("Tower Update1", tow.getCooldownRemaining(), 0);
 		
 		for(int i = 0; i < 15; i++){ // 15 more updates, all should move over one
-			Grid.update();
+			g.update();
 		}
 		
 		assertEquals("Oyster Update16", o.getPosn().getX(), 1);
@@ -111,7 +111,7 @@ class GridTest {
 		assertEquals("Tower Update16", tow.getPixelPosn().getY(), 16);
 		assertEquals("Tower Update16", tow.getCooldownRemaining(), 15);
 		
-		Grid.update();
+		g.update();
 		
 		assertEquals("Oyster Update17", o.getPosn().getX(), 1);
 		assertEquals("Oyster Update17", o.getPosn().getY(), 0);
@@ -140,7 +140,7 @@ class GridTest {
 		assertEquals("Tower Update17", tow.getCooldownRemaining(), 14);
 		
 		for(int i = 0; i < 15; i++){
-			Grid.update();
+			g.update();
 		}
 		
 		assertEquals("Oyster Update32", o.getPosn().getX(), 2);
@@ -169,7 +169,7 @@ class GridTest {
 		assertEquals("Tower Update32", tow.getPixelPosn().getY(), 16);
 		assertEquals("Tower Update32", tow.getCooldownRemaining(), 29);
 		
-		Grid.update();
+		g.update();
 		
 		assertEquals("Oyster Update33", o.getPosn().getX(), 2);
 		assertEquals("Oyster Update33", o.getPosn().getY(), 0);
@@ -198,7 +198,7 @@ class GridTest {
 		assertEquals("Tower Update33", tow.getCooldownRemaining(), 28);
 		
 		for(int i = 0; i < 15; i++){
-			Grid.update();
+			g.update();
 		}
 		
 		assertEquals("Oyster Update48", o.getPosn().getX(), 2);
@@ -231,7 +231,7 @@ class GridTest {
 
 	@Test
 	public void testClickHandler() {
-		Grid g = new Grid(80, 60);
+		Grid g = new Grid();
 		GridCell[][] p = new GridCell[3][3];
 		p[0][0] = new GridCell(new Posn(0, 0), Direction.EAST, true);
 		p[1][0] = new GridCell(new Posn(1, 0), Direction.EAST, true);
@@ -245,7 +245,7 @@ class GridTest {
 		// >>V
 		// <.V
 		// ^<<
-		Grid.setCells(p);
+		g.setCells(p);
 		
 		TrailItem t1 = new Oyster();
 		t1.setPosn(new Posn(0, 1));
@@ -259,14 +259,14 @@ class GridTest {
 		t3.setPosn(new Posn(2, 0));
 		t3.setPixelPosn(new Posn(47, 15));
 		
-		Grid.clickHandler(15, 31);
-		Grid.clickHandler(47, 47);
-		Grid.clickHandler(47, 15);
+		g.clickHandler(15, 31);
+		g.clickHandler(47, 47);
+		g.clickHandler(47, 15);
 		
-		assertFalse("ClickHandler Oyster", Grid.getTrailItems().contains(t1));
-		assertFalse("ClickHandler Oyster", Grid.getTrailItems().contains(t2));
-		assertFalse("ClickHandler Oyster", Grid.getTrailItems().contains(t3));
-		assertEquals("ClickHandler Happiness", Grid.getPlayer().getEstuaryHealth(), 49);
+		assertFalse("ClickHandler Oyster", g.getTrailItems().contains(t1));
+		assertFalse("ClickHandler Oyster", g.getTrailItems().contains(t2));
+		assertFalse("ClickHandler Oyster", g.getTrailItems().contains(t3));
+		assertEquals("ClickHandler Happiness", g.getPlayer().getEstuaryHealth(), 49);
 	}
 
 }
