@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.*;
 
 import drawing.ImageLibrary;
-import gabion.Gabion;
+import gabions.Gabion;
 import towers.Tower;
 import trailitems.TrailItem;
 
@@ -24,6 +24,8 @@ public class Grid {
 	private PixelGrid pixelGrid;
 	private Difficulty difficulty;
 	private Posn[] posnByDirection;
+	private Touch touch;
+	private Structures towerComponent;
 	
 	static private Grid grid = null;
 	//// Attributes ////
@@ -54,9 +56,14 @@ public class Grid {
 		posnByDirection[Direction.WEST.ordinal()] = new Posn(-1, 0);
 		posnByDirection[Direction.SOUTH.ordinal()] = new Posn(0, 1);
 		new ImageLibrary();
+		touch = new Touch();
+		towerComponent = new Structures((int) d.getWidth(), (int) d.getHeight(), pixelGrid);
 	}
 	
 	//// Getters and Setters ////
+	public Structures getTowerComponent(){
+		return towerComponent;
+	}
 	public DirectionGrid getCells(){
 		return cells;
 	}
@@ -96,6 +103,10 @@ public class Grid {
 	
 	public void setPaths(Collection<Path> p){
 		paths = p;
+	}
+	
+	public Touch getTouch(){
+		return touch;
 	}
 	
 	public Posn getCellPosnFromPixelPosn(Posn pixel){
@@ -145,12 +156,14 @@ public class Grid {
 		// Draw estuary
 		// Draw grid items
 		cells.draw(g);
-		for(TrailItem item : trailItems){
+		towerComponent.draw(g);
+		for(GridItem item : items){
 			item.draw(g);
 		}
 		for(Path p : paths){
 			p.getGridItem().draw(g);
 		}
+		touch.draw(g);
 	}
 	
 	/**
@@ -170,24 +183,46 @@ public class Grid {
 		// Step 2 : Check what in the grid was clicked
 		// For now, it will be inefficient
 		System.out.println(new Posn(mouseX, mouseY));
-		for(TrailItem ti : trailItems){
-			int imageWidth = ti.getAnimation().getImageWidth();
-			int imageHeight = ti.getAnimation().getImageHeight();
-			int xOffset = ti.getAnimation().getXOffset();
-			int yOffset = ti.getAnimation().getYOffset();
-			int itemX = ti.getPixelPosn().getX();
-			int itemY = ti.getPixelPosn().getY();
-			
-			int left = itemX - xOffset;
-			int right = itemX + (imageWidth - xOffset);
-			int top = itemY - yOffset;
-			int bottom = itemY + (imageHeight - yOffset);
-			
-			if(left <= mouseX && right >= mouseX && top <= mouseY && bottom >= mouseY){
-				ti.click();
-				return;
+		if(pixelGrid.isWithin(mouseX, mouseY)){
+			for(TrailItem ti : trailItems){
+				int imageWidth = ti.getAnimation().getImageWidth();
+				int imageHeight = ti.getAnimation().getImageHeight();
+				int xOffset = ti.getAnimation().getXOffset();
+				int yOffset = ti.getAnimation().getYOffset();
+				int itemX = ti.getPixelPosn().getX();
+				int itemY = ti.getPixelPosn().getY();
+				
+				int left = itemX - xOffset;
+				int right = itemX + (imageWidth - xOffset);
+				int top = itemY - yOffset;
+				int bottom = itemY + (imageHeight - yOffset);
+				
+				if(left <= mouseX && right >= mouseX && top <= mouseY && bottom >= mouseY){
+					ti.click();
+					return;
+				}
 			}
+		} else if (towerComponent.isWithin(mouseX, mouseY)){
+			towerComponent.click(mouseX, mouseY);
 		}
+	}
+	
+	/**
+	 * Handle mouse releases
+	 * @param mouseX
+	 * @param mouseY
+	 */
+	public void releaseHandler(int mouseX, int mouseY){
+		touch.releaseHandler(mouseX, mouseY);
+	}
+	
+	/**
+	 * Handle mouse drags
+	 * @param mouseX
+	 * @param mouseY
+	 */
+	public void dragHandler(int mouseX, int mouseY){
+		touch.dragHandler(mouseX, mouseY);
 	}
 	
 	/**
@@ -253,6 +288,11 @@ public class Grid {
 	
 	public void addPath(Path p){
 		paths.add(p);
+	}
+	
+	public void addTower(Tower t){
+		items.add(t);
+		towers.add(t);
 	}
 	//// Methods ////
 

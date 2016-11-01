@@ -4,9 +4,8 @@ import java.awt.Graphics;
 import java.util.concurrent.ThreadLocalRandom;
 import java.awt.Color;
 
-public class PixelGrid {
+public class PixelGrid extends GridComponent {
 	
-	private Posn topLeftCorner;
 	private int squareSize;
 	private int numberOfSquares;
 	private double SCREEN_PERCENT = 0.8;
@@ -18,6 +17,7 @@ public class PixelGrid {
 		this.numberOfSquares = numSquares;
 		double corner = (double) screenHeight * 0.1;
 		topLeftCorner = new Posn((int) corner, (int) corner);
+		bottomRightCorner = new Posn(topLeftCorner.getX() + gridSize, topLeftCorner.getY() + gridSize);
 	}
 	
 	/**
@@ -56,6 +56,7 @@ public class PixelGrid {
 		int yPos = (y - topLeftCorner.getY()) / squareSize;
 		if(xPos >= numberOfSquares || yPos >= numberOfSquares
 				|| xPos < 0 || yPos < 0){
+			System.out.println("OutOfGridException()");
 			throw new OutOfGridException();
 		}
 		return Grid.getInstance().getCells().gridCellAt(xPos, yPos).getPosn();
