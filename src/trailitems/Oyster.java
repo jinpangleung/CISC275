@@ -12,7 +12,7 @@ public class Oyster extends TrailItem{
 	public Oyster(){
 		health = 1;
 		speed = 1;
-		color = Color.BLUE;
+		color = GridColor.BLUE;
 		isBad = false;
 		animation = new Animation("oyster", Offset.CENTER, Offset.CENTER);
 	}
