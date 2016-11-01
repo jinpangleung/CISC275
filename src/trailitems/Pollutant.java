@@ -2,7 +2,7 @@ package trailitems;
 
 import drawing.Animation;
 import drawing.Offset;
-import model.Color;
+import model.GridColor;
 
 public class Pollutant extends TrailItem {
 	
@@ -10,7 +10,7 @@ public class Pollutant extends TrailItem {
 		health = this.health;
 		speed = 1;
 		isBad = false;
-		color = Color.RED;
+		color = GridColor.RED;
 		animation = new Animation("pollutant", Offset.CENTER, Offset.CENTER);
 	}
 	
