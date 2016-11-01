@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.util.Collection;
 import java.util.Iterator;
 
+import gabion.Gabion;
+import towers.Tower;
+
 public class Storm {
 	protected boolean isStorming;
 	protected int damage;
