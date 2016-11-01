@@ -43,6 +43,11 @@ public class Player {
 	
 	public void increaseOysterCount(){
 		oysterCount++;
+		
+		if (oysterCount == 4){
+			oysterCount = 0;
+			//dont need gabion count, will be added in collections
+		}
 	}
 	
 	
