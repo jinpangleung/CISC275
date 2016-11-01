@@ -1,7 +1,7 @@
 package model;
 
 public enum Color {
-	WHITE, RED, GREEN, BLUE
+	WHITE, RED, GREEN, BLUE, YELLOW
 	//White = all
 	//Red = pollutant
 	//Green = Invasive item
