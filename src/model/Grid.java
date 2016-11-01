@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.*;
 
 import drawing.ImageLibrary;
-import gabions.Gabion;
+import gabion.Gabion;
 import towers.Tower;
 import trailitems.TrailItem;
 
