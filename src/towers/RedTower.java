@@ -1,23 +1,20 @@
 package towers;
 
+import drawing.Animation;
+import drawing.Offset;
 import model.GridColor;
 
 public class RedTower extends Tower {
 
 	public RedTower(){
-		color = GridColor.RED;
+		gridColor = GridColor.RED;
 		cooldownRemaining = 10;
-		range = 1;
+		range = 10;
+		animation = new Animation("pollutant_tower", Offset.CENTER, Offset.CENTER);
 	}
 	
 	@Override
 	public void ability(){
-		System.out.println(color + " tower ability active");
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+		//TODO
 	}
 }

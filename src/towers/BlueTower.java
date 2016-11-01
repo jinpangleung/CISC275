@@ -1,23 +1,20 @@
 package towers;
 
+import drawing.Animation;
+import drawing.Offset;
 import model.GridColor;
 
 public class BlueTower extends Tower{
 	
 	public BlueTower(){
-		color = GridColor.BLUE;
+		gridColor = GridColor.BLUE;
 		cooldownRemaining = 10;
-		range = 1;
+		range = 10;
+		animation = new Animation("oyster_tower", Offset.CENTER, Offset.CENTER);
 	}
 	
 	@Override
 	public void ability(){
-		System.out.println(color + " tower ability active");
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 }

@@ -6,7 +6,7 @@ import model.GridItem;
 public abstract class Tower extends GridItem {
 	
 	//// Attributes ////
-	protected GridColor color;
+	protected GridColor gridColor;
 	protected int cooldownRemaining;
 	protected int range;
 	
@@ -14,7 +14,7 @@ public abstract class Tower extends GridItem {
 	
 	////  Getters  ////
 	public GridColor getColor(){
-		return this.color;
+		return this.gridColor;
 	}
 	
 	public int getCooldownRemaining(){
@@ -31,7 +31,7 @@ public abstract class Tower extends GridItem {
 	
 	public String toString(){
 		String str = "";
-		switch(color){
+		switch(gridColor){
 		case RED: str += "Red Tower "; break;
 		case BLUE: str += "Blue Tower "; break;
 		case GREEN: str += "Green Tower "; break;
