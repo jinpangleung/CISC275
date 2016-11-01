@@ -21,6 +21,7 @@ public class View extends JFrame {
 	
 	public void registerListeners(MouseController mouseController){
 		panel.addMouseListener(mouseController);
+		panel.addMouseMotionListener(mouseController);
 	}
 	
 	public Dimension getPanelSize(){
