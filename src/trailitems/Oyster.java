@@ -6,13 +6,26 @@ import drawing.Animation;
 import drawing.Offset;
 import model.*;
 
+/**
+ * 
+ * Oyster is thing that you want to pick up, and when you picked up enough oysters you can build a oyster
+ * gabion
+ * 
+ * @author Roy Cheng
+ * @version 1
+ * @attributes health - health of the trailitems
+ * @attributes speed - how fast they travel in the river
+ * @attributes isBad - if it is bad to click on it
+ * 
+ */
+
 public class Oyster extends TrailItem{
 	
 	//// Constructor ////
 	public Oyster(){
 		health = 1;
 		speed = 1;
-		gridColor = GridColor.BLUE;
+		color = GridColor.BLUE;
 		isBad = false;
 		animation = new Animation("oyster", Offset.CENTER, Offset.CENTER);
 	}
