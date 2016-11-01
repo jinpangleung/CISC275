@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import gabions.ConcreteGabion;
+import gabion.ConcreteGabion;
 
 public class ConcreteGabionTest {
 
