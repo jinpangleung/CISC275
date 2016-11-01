@@ -1,11 +1,11 @@
 package towers;
 
-import model.Color;
+import model.GridColor;
 
 public class BlueTower extends Tower{
 	
 	public BlueTower(){
-		color = Color.BLUE;
+		color = GridColor.BLUE;
 		cooldownRemaining = 10;
 		range = 1;
 	}
