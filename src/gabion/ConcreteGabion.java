@@ -1,4 +1,4 @@
-package gabions;
+package gabion;
 
 public class ConcreteGabion extends Gabion {
 	
