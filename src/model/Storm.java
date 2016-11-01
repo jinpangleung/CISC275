@@ -15,9 +15,9 @@ public class Storm {
 	
 	public void dealDamage(){
 		//TODO
-		Collection<GridItem> allItems = Grid.getItems();
-		Collection<Gabion> gabion = Grid.getGabions();
-		Collection<Tower> tower = Grid.getTowers();
+		Collection<GridItem> allItems = Grid.getInstance().getItems();
+		Collection<Gabion> gabion = Grid.getInstance().getGabions();
+		Collection<Tower> tower = Grid.getInstance().getTowers();
 	 
 		for(Iterator<Gabion> gLoop = gabion.iterator(); gLoop.hasNext();){
 			Gabion gRandom = gLoop.next();
