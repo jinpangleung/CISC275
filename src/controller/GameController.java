@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import model.Grid;
 
@@ -39,3 +39,4 @@ public class GameController {
 		}
 	}
 }
+*/
