@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import model.Color;
+import model.GridColor;
 import model.Grid;
 import model.GridItem;
 import trailitems.Oyster;
@@ -19,8 +19,8 @@ public class PollutantTest {
 	public void test() {
 		Pollutant TestPollutant = new Pollutant(3);
 		Pollutant TestPollutant2 = new Pollutant(3);
-		Collection<TrailItem> pollutant = Grid.getTrailItems();
-		Collection<GridItem> GridItems2 = Grid.getItems();
+		Collection<TrailItem> pollutant = Grid.getInstance().getTrailItems();
+		Collection<GridItem> GridItems2 = Grid.getInstance().getItems();
 		pollutant.add(TestPollutant);
 		pollutant.add(TestPollutant2);
 		GridItems2.add(TestPollutant);
@@ -30,13 +30,13 @@ public class PollutantTest {
 		assertEquals("Pass", 3, TestPollutant.getHealth());
 		assertEquals("Pass", 1, TestPollutant.getSpeed());
 		assertEquals("Pass", false, TestPollutant.getIsBad());
-		assertEquals("Pass", Color.RED, TestPollutant.getColor());
+		assertEquals("Pass", GridColor.RED, TestPollutant.getColor());
 		
 		//All false
 		assertEquals("Pass", 2, TestPollutant.getHealth());
 		assertEquals("Pass", 0, TestPollutant.getSpeed());
 		assertEquals("Pass", true, TestPollutant.getIsBad());
-		assertEquals("Pass", Color.BLUE, TestPollutant.getColor());
+		assertEquals("Pass", GridColor.BLUE, TestPollutant.getColor());
 		
 		
 		
@@ -48,13 +48,13 @@ public class PollutantTest {
 		assertEquals("Pass", 2, TestPollutant.getHealth());
 		assertEquals("Pass", 1, TestPollutant.getSpeed());
 		assertEquals("Pass", false, TestPollutant.getIsBad());
-		assertEquals("Pass", Color.RED, TestPollutant.getColor());
+		assertEquals("Pass", GridColor.RED, TestPollutant.getColor());
 		
 		//All false
 		assertEquals("Pass", 3, TestPollutant.getHealth());
 		assertEquals("Pass", 0, TestPollutant.getSpeed());
 		assertEquals("Pass", true, TestPollutant.getIsBad());
-		assertEquals("Pass", Color.BLUE, TestPollutant.getColor());		
+		assertEquals("Pass", GridColor.BLUE, TestPollutant.getColor());		
 		
 		TestPollutant.click();
 		TestPollutant.click();
