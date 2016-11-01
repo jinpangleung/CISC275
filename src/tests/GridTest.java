@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import model.*;
-import gabions.*;
+import gabion.*;
 import towers.*;
 import trailitems.*;
 
