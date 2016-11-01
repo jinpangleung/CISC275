@@ -3,6 +3,18 @@ package towers;
 import model.GridColor;
 import model.GridItem;
 
+/**
+ * A Tower is an abstract object that extends GridItem. 
+ * 
+ * @author leung
+ * @version 1
+ * @attributes GridColor - Color on the grid
+ * @attributes cooldownRemaining - Cooldown for tower
+ * @attributes range - range of tower
+ * @throw
+ * @return
+ */
+
 public abstract class Tower extends GridItem {
 	
 	//// Attributes ////
