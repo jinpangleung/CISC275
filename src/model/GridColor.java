@@ -1,7 +1,7 @@
 package model;
 
 public enum GridColor {
-	WHITE, RED, GREEN, BLUE, YELLOW
+	WHITE, RED, GREEN, BLUE
 	//White = all
 	//Red = pollutant
 	//Green = Invasive item
