@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-import model.Color;
+import model.GridColor;
 import model.Grid;
 import model.GridItem;
 import trailitems.Larvae;
@@ -19,8 +19,8 @@ public class LarvaeTest {
 	public void test() {
 		Larvae myLarvae = new Larvae();
 		Larvae myLarvae2 = new Larvae();
-		Collection<TrailItem> larvae = Grid.getTrailItems();
-		Collection<GridItem> GridItems = Grid.getItems();
+		Collection<TrailItem> larvae = Grid.getInstance().getTrailItems();
+		Collection<GridItem> GridItems = Grid.getInstance().getItems();
 		larvae.add(myLarvae);
 		larvae.add(myLarvae2);
 		GridItems.add(myLarvae);
@@ -28,13 +28,13 @@ public class LarvaeTest {
 		
 		// / / / ALL TRUE / / / //
 		assertEquals("Pass",1, myLarvae.getHealth());
-		assertEquals("Pass",Color.WHITE, myLarvae.getColor());
+		assertEquals("Pass",GridColor.YELLOW, myLarvae.getColor());
 		assertEquals("Pass",1, myLarvae.getSpeed());
 		assertEquals("Pass",true, myLarvae.getIsBad());
 		
 		// / / / ALL FALSE / / / //
 		assertEquals("Pass",0, myLarvae.getHealth());
-		assertEquals("Pass",Color.BLUE, myLarvae.getColor());
+		assertEquals("Pass",GridColor.BLUE, myLarvae.getColor());
 		assertEquals("Pass",0, myLarvae.getSpeed());
 		assertEquals("Pass",false, myLarvae.getIsBad());
 		
