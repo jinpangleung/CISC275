@@ -1,4 +1,4 @@
-package gabion;
+package gabions;
 
 import model.GridItem;
 
@@ -16,7 +16,7 @@ public abstract class Gabion extends GridItem {
 		this.health = x;
 	}
 
-	public void update(double elapsedTickTime){
+	public void update(){
 		// do nothing
 	}
 }
