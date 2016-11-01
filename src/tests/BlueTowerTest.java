@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import towers.BlueTower;
-import model.Color;
+import model.GridColor;
 import model.Posn;
 
 public class BlueTowerTest {
@@ -16,12 +16,12 @@ public class BlueTowerTest {
 		
 		
 		//All true
-		assertEquals("Pass", Color.BLUE, blue.getColor());
+		assertEquals("Pass", GridColor.BLUE, blue.getColor());
 		assertEquals("Pass", 10, blue.getCooldownRemaining());
 		assertEquals("Pass", 10, blue.getRange());
 		
 		//All false
-		assertEquals("Pass", Color.RED, blue.getColor());
+		assertEquals("Pass", GridColor.RED, blue.getColor());
 		assertEquals("Pass", 9, blue.getCooldownRemaining());
 		assertEquals("Pass", 9, blue.getRange());
 		
