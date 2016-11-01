@@ -15,7 +15,7 @@ public class GreenTowerTest {
 		
 		
 		//All true
-		assertEquals("Pass", GridColor.BLUE, green.getColor());
+		assertEquals("Pass", GridColor.GREEN, green.getColor());
 		assertEquals("Pass", 10, green.getCooldownRemaining());
 		assertEquals("Pass", 10, green.getRange());
 		
