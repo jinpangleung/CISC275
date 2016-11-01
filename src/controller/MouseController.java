@@ -18,11 +18,11 @@ public class MouseController implements MouseListener,
 	}
 	
 	public void mouseReleased(MouseEvent event){
-		
+		Grid.getInstance().getTouch().releaseHandler(event.getX(), event.getY());
 	}
 	
 	public void mouseDragged(MouseEvent event){
-		
+		Grid.getInstance().getTouch().dragHandler(event.getX(), event.getY());
 	}
 	
 	public void mouseMoved(MouseEvent event){
