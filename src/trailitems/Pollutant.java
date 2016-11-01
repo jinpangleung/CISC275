@@ -10,7 +10,7 @@ public class Pollutant extends TrailItem {
 		health = this.health;
 		speed = 1;
 		isBad = false;
-		color = GridColor.RED;
+		gridColor = GridColor.RED;
 		animation = new Animation("pollutant", Offset.CENTER, Offset.CENTER);
 	}
 	

@@ -10,7 +10,7 @@ public class InvasiveItem extends TrailItem {
 		health = 1;
 		speed = 1;
 		isBad = false;
-		color = GridColor.GREEN;
+		gridColor = GridColor.GREEN;
 		animation = new Animation("invasive_item", Offset.CENTER, Offset.CENTER);
 	}
 	

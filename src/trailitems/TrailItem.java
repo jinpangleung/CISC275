@@ -12,7 +12,7 @@ public class TrailItem extends GridItem {
 	protected int health;
 	protected int speed;
 	protected boolean isBad; //is bad when you click on it
-	protected GridColor color;
+	protected GridColor gridColor;
 	
 	//// Constants ////
 	protected final int CLICKDAMAGE = 1;
@@ -28,7 +28,7 @@ public class TrailItem extends GridItem {
 		return this.isBad;
 	}
 	public GridColor getColor(){
-		return this.color;
+		return this.gridColor;
 	}
 	public void setSpeed(int s){
 		this.speed = s;
