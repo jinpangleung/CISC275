@@ -1,6 +1,6 @@
 package trailitems;
 
-import model.Color;
+import model.GridColor;
 import model.Grid;
 import model.GridItem;
 import model.Posn;
@@ -12,7 +12,7 @@ public class TrailItem extends GridItem {
 	protected int health;
 	protected int speed;
 	protected boolean isBad; //is bad when you click on it
-	protected Color color;
+	protected GridColor color;
 	
 	//// Constants ////
 	protected final int CLICKDAMAGE = 1;
@@ -27,7 +27,7 @@ public class TrailItem extends GridItem {
 	public boolean getIsBad(){
 		return this.isBad;
 	}
-	public Color getColor(){
+	public GridColor getColor(){
 		return this.color;
 	}
 	public void setSpeed(int s){
