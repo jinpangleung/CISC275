@@ -5,14 +5,27 @@ import model.Grid;
 import model.GridItem;
 import model.Posn;
 
+/**
+ * 
+ * trailitems are items that flow through the river
+ * 
+ * @author Roy Cheng
+ * @version 1
+ * @attributes health - health of the trailitems
+ * @attributes speed - how fast they travel in the river
+ * @attributes isBad - if it is bad to click on it
+ * 
+ */
+
+
 //Abstract class
-public abstract class TrailItem extends GridItem {
+public class TrailItem extends GridItem {
 	
 	//// Attributes ////
 	protected int health;
 	protected int speed;
 	protected boolean isBad; //is bad when you click on it
-	protected GridColor gridColor;
+	protected GridColor color;
 	
 	//// Constants ////
 	protected final int CLICKDAMAGE = 1;
@@ -28,7 +41,7 @@ public abstract class TrailItem extends GridItem {
 		return this.isBad;
 	}
 	public GridColor getColor(){
-		return this.gridColor;
+		return this.color;
 	}
 	public void setSpeed(int s){
 		this.speed = s;
