@@ -11,7 +11,7 @@ public class Larvae extends TrailItem {
 	public Larvae(){
 		health = 1;
 		speed = 1;
-		color = Color.WHITE;
+		color = Color.YELLOW;
 		isBad = true; //dont click on the larvae!!!
 		animation = new Animation("larvae", Offset.CENTER, Offset.CENTER);
 	}
